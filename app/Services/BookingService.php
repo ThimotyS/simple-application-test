@@ -10,13 +10,13 @@ class BookingService
     public function createBatchBookings(int $roomId, array $bookings): array
     {
         //complete this call
-
+        // Define query builder variable
         $conflicts = DB::table('bookings');
         
         foreach($bookings as $index => $booking) {
             // Set room_id value as it is missing in each $booking
             $bookings[$index]["room_id"] = $roomId;
-            // Add orWhere query to check if booking has overlap to query builder
+            // Add orWhere query to check if booking has overlap to query builder variable
             $conflicts = $conflicts->orWhere(function (Builder $query) use ($roomId,$booking){
                 $query->where('room_id', '=',$roomId)
                 ->where('start_time', '<=', $booking['end_time'])
@@ -28,9 +28,8 @@ class BookingService
         
         // Insert new bookings in table
         DB::table("bookings")->insert($bookings);
+        
         // Return positive response
         return ['success' => true, 'conflicts' => []];
-    }
-    
-    
+    } 
 }
