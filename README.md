@@ -45,6 +45,7 @@
             Cons: 
                 If all potential conflicts are needed for further usage, then this solution won't work
 #### Implement solution 2
+    Search up if there's a way to dynamically chain query clauses together
     Define query builder variable
     For each booking in $bookings
         add previously defined where query to query builder variable
