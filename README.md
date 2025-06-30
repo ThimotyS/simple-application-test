@@ -8,7 +8,7 @@
 	Install laravel
 	Install posgresql
 	Create new table + user for project
-	Create .env file with new values
+	Create .env file with database values
 
 ## Steps
 ### Issues
